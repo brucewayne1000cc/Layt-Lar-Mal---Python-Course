@@ -1,5 +1,6 @@
 
 import random
+import os
 
 people = [
     {
@@ -67,13 +68,14 @@ vehicles = [
     {"name": "Ducati 916", "type": "Motorcycle"}
 ]
 
-def article(occupation):
-    firstLetter = occupation[0]
+def article(word):
+    firstL = word[0]
 
-    if firstLetter == 'A':
-        return 'an'
+    if firstL in 'AEIOU':
+        return 'An'
     else:
-        return 'a'
+        return 'A'
+
 
 def pronoun(gender):
 
@@ -82,13 +84,15 @@ def pronoun(gender):
     else:
         return 'She'
 
+os.system('cls' if os.name == 'nt' else 'clear')
+
 for person in people:
 
     name = person['name']
     occupation = person["occupation"]
     gender = person["gender"]
 
-    print(f"\n This is {name}.\n {pronoun(gender)} is {article(occupation)} {occupation}.")
+    print(f"\n This is {name}.\n {pronoun(gender)} is {article(occupation).lower()} {occupation}.")
 
 def operation(type):
     if type == 'Car':
